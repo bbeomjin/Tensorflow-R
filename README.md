@@ -93,6 +93,10 @@ Tensorflow_DNN(X, y, hidden_layer,
 </tbody>
 </table>
 
+------------------------------------------------------------------------
+
+### Example Code
+
 ``` r
 source("./Tensorflow_DNN.R")
 data("iris")
@@ -149,16 +153,16 @@ iris_dnn = tensorflow_DNN(X = train_iris[, 1:4], y = train_iris$Species, hidden_
     ##  Regularizer: l2_loss 
     ##  Cost: 0 
     ## --------------------------------------------------- 
-    ## Epoch 500. Loss 0.143236, Training accuracy 1.000000 
-    ## Epoch 1000. Loss 0.105178, Training accuracy 1.000000 
-    ## Epoch 1500. Loss 0.083935, Training accuracy 1.000000 
-    ## Epoch 2000. Loss 0.070148, Training accuracy 1.000000 
-    ## Epoch 2500. Loss 0.060567, Training accuracy 1.000000 
-    ## Epoch 3000. Loss 0.053687, Training accuracy 1.000000 
-    ## Epoch 3500. Loss 0.048456, Training accuracy 1.000000 
-    ## Epoch 4000. Loss 0.044425, Training accuracy 1.000000 
-    ## Epoch 4500. Loss 0.041210, Training accuracy 1.000000 
-    ## Epoch 5000. Loss 0.038696, Validation accuracy 0.937500
+    ## Epoch 500. Loss 0.208178, Training accuracy 0.913043 
+    ## Epoch 1000. Loss 0.159512, Training accuracy 0.956522 
+    ## Epoch 1500. Loss 0.135208, Training accuracy 0.956522 
+    ## Epoch 2000. Loss 0.120115, Training accuracy 0.956522 
+    ## Epoch 2500. Loss 0.108294, Training accuracy 0.956522 
+    ## Epoch 3000. Loss 0.098384, Training accuracy 0.956522 
+    ## Epoch 3500. Loss 0.090175, Training accuracy 0.956522 
+    ## Epoch 4000. Loss 0.083230, Training accuracy 0.956522 
+    ## Epoch 4500. Loss 0.077113, Training accuracy 0.956522 
+    ## Epoch 5000. Loss 0.071429, Validation accuracy 0.875000
 
 ``` r
 pred_y = predict_DNN(model = iris_dnn, newdata = test_iris[, 1:4], type = "class")
@@ -167,6 +171,6 @@ table(test_iris[, 5], pred_y)
 
     ##             pred_y
     ##              setosa versicolor virginica
-    ##   setosa         14          0         0
-    ##   versicolor      0         16         1
-    ##   virginica       0          1        13
+    ##   setosa         12          0         0
+    ##   versicolor      0         20         1
+    ##   virginica       0          0        12
