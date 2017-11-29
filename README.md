@@ -5,6 +5,10 @@ Park Beom-Jin
 
 ### Easy-to-use neural network function using tensorflow for R users
 
+This function helps R users who want to use tensorflow but do not know python language and busy people.
+
+If you are advanced R user or want to do more variety of neural network structures, I recommend you to create codes it yourself
+
 ``` r
 Tensorflow_DNN(X, y, hidden_layer, 
               learning = list(optimizer_type = "GradientDescentOptimizer", 
@@ -153,16 +157,16 @@ iris_dnn = tensorflow_DNN(X = train_iris[, 1:4], y = train_iris$Species, hidden_
     ##  Regularizer: l2_loss 
     ##  Cost: 0 
     ## --------------------------------------------------- 
-    ## Epoch 500. Loss 0.208178, Training accuracy 0.913043 
-    ## Epoch 1000. Loss 0.159512, Training accuracy 0.956522 
-    ## Epoch 1500. Loss 0.135208, Training accuracy 0.956522 
-    ## Epoch 2000. Loss 0.120115, Training accuracy 0.956522 
-    ## Epoch 2500. Loss 0.108294, Training accuracy 0.956522 
-    ## Epoch 3000. Loss 0.098384, Training accuracy 0.956522 
-    ## Epoch 3500. Loss 0.090175, Training accuracy 0.956522 
-    ## Epoch 4000. Loss 0.083230, Training accuracy 0.956522 
-    ## Epoch 4500. Loss 0.077113, Training accuracy 0.956522 
-    ## Epoch 5000. Loss 0.071429, Validation accuracy 0.875000
+    ## Epoch 500. Loss 0.141755, Training accuracy 1.000000 
+    ## Epoch 1000. Loss 0.092505, Training accuracy 1.000000 
+    ## Epoch 1500. Loss 0.067768, Training accuracy 1.000000 
+    ## Epoch 2000. Loss 0.053076, Training accuracy 1.000000 
+    ## Epoch 2500. Loss 0.043495, Training accuracy 1.000000 
+    ## Epoch 3000. Loss 0.036851, Training accuracy 1.000000 
+    ## Epoch 3500. Loss 0.032035, Training accuracy 1.000000 
+    ## Epoch 4000. Loss 0.028424, Training accuracy 1.000000 
+    ## Epoch 4500. Loss 0.025624, Training accuracy 1.000000 
+    ## Epoch 5000. Loss 0.023403, Validation accuracy 1.000000
 
 ``` r
 pred_y = predict_DNN(model = iris_dnn, newdata = test_iris[, 1:4], type = "class")
@@ -171,6 +175,6 @@ table(test_iris[, 5], pred_y)
 
     ##             pred_y
     ##              setosa versicolor virginica
-    ##   setosa         12          0         0
-    ##   versicolor      0         20         1
-    ##   virginica       0          0        12
+    ##   setosa         17          0         0
+    ##   versicolor      0         13         2
+    ##   virginica       0          1        12
