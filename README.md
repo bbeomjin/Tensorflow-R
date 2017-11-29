@@ -9,6 +9,8 @@ This function helps R users who want to use tensorflow but do not know python la
 
 If you are advanced R user or want to do more variety of neural network structures, I recommend you to create codes it yourself
 
+Please email us for bugs or errors. <bbeompark@gmail.com>
+
 ``` r
 Tensorflow_DNN(X, y, hidden_layer, 
               learning = list(optimizer_type = "GradientDescentOptimizer", 
@@ -22,76 +24,93 @@ Tensorflow_DNN(X, y, hidden_layer,
               verb = TRUE, save = FALSE, output = 1)
 ```
 
-<table style="width:86%;">
+<table style="width:89%;">
 <colgroup>
 <col width="5%" />
+<col width="2%" />
 <col width="80%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">Arguments</th>
+<th></th>
 <th align="left"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center">X</td>
+<td></td>
 <td align="left">a matrix(or data frame) containing the explanatory variables(independent variable)</td>
 </tr>
 <tr class="even">
 <td align="center">y</td>
+<td></td>
 <td align="left">a vector of class or response variable(dependent variable)</td>
 </tr>
 <tr class="odd">
 <td align="center">hidden_layer</td>
+<td></td>
 <td align="left">a vector of integers specifying the number of hidden neurons(nodes) in each layer</td>
 </tr>
 <tr class="even">
 <td align="center">learning</td>
+<td></td>
 <td align="left">a list containing optimization parameter. see &quot;Detail&quot;</td>
 </tr>
 <tr class="odd">
 <td align="center">act_fun</td>
+<td></td>
 <td align="left">a character specifying type of activation function</td>
 </tr>
 <tr class="even">
 <td align="center">init_fun</td>
+<td></td>
 <td align="left">a character specifying type of function to initialize weight</td>
 </tr>
 <tr class="odd">
 <td align="center">batch_size</td>
+<td></td>
 <td align="left">number of samples that using to optimization. If it is 'NULL', batch_size = nrow(X)</td>
 </tr>
 <tr class="even">
 <td align="center">dropout_rate</td>
+<td></td>
 <td align="left">percentage of remaining connections of nodes</td>
 </tr>
 <tr class="odd">
 <td align="center">epoch</td>
+<td></td>
 <td align="left">the number of repetitions for the neural network's training</td>
 </tr>
 <tr class="even">
 <td align="center">validation_set</td>
+<td></td>
 <td align="left">a list containing validation set.</td>
 </tr>
 <tr class="odd">
 <td align="center">type</td>
+<td></td>
 <td align="left">a character specifying type of Neural Network</td>
 </tr>
 <tr class="even">
 <td align="center">regularization</td>
+<td></td>
 <td align="left">a list containing regularization type and cost</td>
 </tr>
 <tr class="odd">
 <td align="center">verb</td>
+<td></td>
 <td align="left">Display training accuracy</td>
 </tr>
 <tr class="even">
 <td align="center">save</td>
+<td></td>
 <td align="left">if save = TRUE, save model in working directory</td>
 </tr>
 <tr class="odd">
 <td align="center">output</td>
+<td></td>
 <td align="left">if output = 1, result value contains weight value by node</td>
 </tr>
 </tbody>
@@ -99,7 +118,7 @@ Tensorflow_DNN(X, y, hidden_layer,
 
 ------------------------------------------------------------------------
 
-### Example Code
+#### Example training code
 
 ``` r
 source("./Tensorflow_DNN.R")
@@ -157,16 +176,18 @@ iris_dnn = tensorflow_DNN(X = train_iris[, 1:4], y = train_iris$Species, hidden_
     ##  Regularizer: l2_loss 
     ##  Cost: 0 
     ## --------------------------------------------------- 
-    ## Epoch 500. Loss 0.141755, Training accuracy 1.000000 
-    ## Epoch 1000. Loss 0.092505, Training accuracy 1.000000 
-    ## Epoch 1500. Loss 0.067768, Training accuracy 1.000000 
-    ## Epoch 2000. Loss 0.053076, Training accuracy 1.000000 
-    ## Epoch 2500. Loss 0.043495, Training accuracy 1.000000 
-    ## Epoch 3000. Loss 0.036851, Training accuracy 1.000000 
-    ## Epoch 3500. Loss 0.032035, Training accuracy 1.000000 
-    ## Epoch 4000. Loss 0.028424, Training accuracy 1.000000 
-    ## Epoch 4500. Loss 0.025624, Training accuracy 1.000000 
-    ## Epoch 5000. Loss 0.023403, Validation accuracy 1.000000
+    ## Epoch 500. Loss 0.122467, Training accuracy 1.000000 
+    ## Epoch 1000. Loss 0.057954, Training accuracy 1.000000 
+    ## Epoch 1500. Loss 0.037809, Training accuracy 1.000000 
+    ## Epoch 2000. Loss 0.027160, Training accuracy 1.000000 
+    ## Epoch 2500. Loss 0.021413, Training accuracy 1.000000 
+    ## Epoch 3000. Loss 0.016223, Training accuracy 1.000000 
+    ## Epoch 3500. Loss 0.012790, Training accuracy 1.000000 
+    ## Epoch 4000. Loss 0.010492, Training accuracy 1.000000 
+    ## Epoch 4500. Loss 0.008785, Training accuracy 1.000000 
+    ## Epoch 5000. Loss 0.007471, Validation accuracy 1.000000
+
+#### Example prediction code
 
 ``` r
 pred_y = predict_DNN(model = iris_dnn, newdata = test_iris[, 1:4], type = "class")
@@ -175,6 +196,6 @@ table(test_iris[, 5], pred_y)
 
     ##             pred_y
     ##              setosa versicolor virginica
-    ##   setosa         17          0         0
-    ##   versicolor      0         13         2
-    ##   virginica       0          1        12
+    ##   setosa         21          0         0
+    ##   versicolor      0         11         3
+    ##   virginica       0          0        10
